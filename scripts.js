@@ -1,25 +1,121 @@
-function problemOne() {
+function problemOneMult() {
   //Get all the numbers from the form.
   let num1 = parseFloat(document.getElementById('num1').value);
+  let num2 = parseFloat(document.getElementById('num2').value);
+  let num3 = parseFloat(document.getElementById('num3').value);
+  let num4 = parseFloat(document.getElementById('num4').value);
+  let num5 = parseFloat(document.getElementById('num5').value);
+  let num6 = parseFloat(document.getElementById('num6').value);
 
-  //Find the average, not including the lowest score.
+  var arrInp = [num1, num2, num3, num4, num5, num6];
 
-  //Print it to the console.
-  console.log(average);
+
+  var total = 0;
+
+  for (var i=0; i<arrInp.length; i++) {
+    total += arrInp[i];
+  }
+
+  var avg = total / arrInp.length;
+  console.log("GPA:" + avg);
+
+  document.getElementById('result').innerHTML = avg;
+
+
+
+// Error message
+  if (isNaN(avg)) {
+    $("#warning").fadeIn(100);
+    $("#warning").fadeOut(500);
+    console.log("GPA could not be determined, grade input field left empty");
+  }
 }
+
+
+
+
+function change() {
+  if(entryType.value == 0) {
+    // document.getElementById("singleInp").style.display = "none";
+    $(".multInp").show();
+    $(".multBtn").show();
+    $("#singleInp").hide();
+    $(".singleBtn").hide();
+
+  }
+  else if(entryType.value == 1) {
+    $("#singleInp").show();
+    $(".singleBtn").show();
+    $(".multInp").hide();
+    $(".multBtn").hide();
+    // document.getElementsByClassName("multInp").style.display = "none";
+  }
+}
+
+
+
+
+function problemOneSingle() {
+
+// Use .reduce()?
+  // var i = document.getElementById("singleInp");
+  $("singleInp").value();
+
+
+  var arr = [i];
+
+  arr.reduce(function(previousValue, currentValue, currentIndex, array) {
+  return previousValue + currentValue;
+});
+
+
+  console.log(num7);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function problemTwo() {
   //Get all the letter grades from the form.
   let grade1 = document.getElementById('grade1').value;
+  let grade2 = document.getElementById('grade2').value;
+  let grade3 = document.getElementById('grade3').value;
+  let grade4 = document.getElementById('grade4').value;
+  let grade5 = document.getElementById('grade5').value;
+  let grade6 = document.getElementById('grade6').value;
 
   //Compute the GPA.
+  var gpa = findGPA(grade1, grade2, grade3, grade4, grade5, grade6);
 
   //Print it to the console.
+  console.log(gpa);
 
   //If it is 3.0 or above, turn the div with id="box" green. Otherwise, turn it red.
   // document.getElementById("box").style.backgroundColor = "orange";
 
-}
+  if (gpa >= 3) {
+    document.getElementById("box").style.backgroundColor = "green";
+  } else {
+    document.getElementById("box").style.backgroundColor = "red";
+  }
+
+
+
+
+
+
+
+
+
+
 
 function findMin(num1, num2, num3, num4, num5, num6) {
   let list = [num1, num2, num3, num4, num5, num6];
@@ -55,4 +151,5 @@ function findGPA(grade1, grade2, grade3, grade4, grade5, grade6) {
   }
 
   return sum / 6;
+}
 }
